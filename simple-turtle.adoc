@@ -1,0 +1,283 @@
+= Simpel Turtle Grafik
+Torben Hoffmann
+torben.lehoff@gmail.com
+
+:imagesdir: images
+:doctype: article
+////      
+:toc:
+:toclevels: 2
+////
+:numbered:
+:icons: font
+
+////
+:source-highlighter: rouge
+////
+
+:source-highlighter: pygments
+:source-language: python
+
+:pygmetns-style: tango
+:pygments-linenums-mode: inline
+
+
+Basis for at programmere er, at forstå hvordan man får ting til at ske ved, at skrive
+kommandoer i et program. En af de bedre måder at lære dette på hedder _turtle
+graphics_ eller _skildpaddegrafik_.
+
+Disse øvelser giver mulighed for at prøve en række kommandoer af på en lille turtle
+og derefter lave små programmer.
+
+
+== Pythons REPL
+
+En af de rare ting ved Python er, at man har en REPL (Read-Eval-Print-Loop), hvor man
+kan se resultatet af ens kommandoer med det samme.
+
+Start med at åbne en terminal (aka kommandolinje) - programmet hedder LXTerminal på
+Lubuntu.
+
+Der burde være et link til LXTerminal på jeres desktop, men ellers så er den her:
+Main -> System Tools -> LXterminal. 
+
+På komandolinjen skriver du nu:
+
+```
+python3
+```
+
+Så kommer der til at stå noget i retning af:
+```
+Python 3.5.2 (default, Dec  2 2016, 11:39:22) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+```
+
+Udfor `>>>` står jeres kursor og blinker.
+
+Prøv at skrive `2+2` og tryk på Enter.
+
+Når man trykker på Enter udføres den kommando man har skrevet.
+
+Man kan meget i REPL, men basis er ikke så stort, så man importerer som oftest
+biblioteker, der kan noget mere.
+
+Prøv at skrive
+```
+>>> import math
+>>> math.pi
+```
+
+Når man har lavet `import math` har man adgang til matematik-biblioteket. Det kan
+både være funktioner som `math.pi`, eller funktioner som `math.cos(x)`. I begge
+tilfælde skriver man navnet på biblioteket fulgt af et punktum og så navnet på den
+konstant eller funktion man vil bruge.
+
+Prøv at evaluere `math.pow(2,2)`, `math.pow(2,3)`, `math.pow(4,4)` samt nogle I selv
+finder på. Hvad gør `math.pow(x, y)` egentligt?
+
+== Sig hej til turtle
+
+Alt vedrørende turtle graphics findes i `turtle` biblioteket.
+
+Start med at importere turtle og lav disse kommandoer:
+```
+>>> import turtle
+>>> turtle.forward(50)
+>>> turtle.left(90)
+>>> turtle.forward(30)
+```
+
+Se hvad der sker i vinduet med vores turtle for hvert skridt.
+
+Andre kommandoer af interesse lige nu:
+
+* `turtle.right(angle)`
+* `turtle.backward(distance)`
+* `turtle.penup()`
+* `turtle.pendown()`
+* `turtle.position()`
+* `turtle.goto(x,y)`
+* `turtle.heading()`
+* `turtle.hideturtle()`
+
+Lav lidt eksperimenter med disse kommandoer for at finde ud af hvad de gør.
+
+== Tegn en ligesidet trekant
+
+Med de kommandoer I kender nu kan I lave en ligesidet trekant. Prøv at tegne 2 med forskellig
+størrelse.
+
+== Tegn et kvadrat
+
+Prøv at tegne 2 med forskellig størreltse.
+
+== Tegn en regulær femkant
+
+Find ud af hvor meget der skal drejes hver gang.
+
+
+== Opstart af editor
+
+Uanset hvor nyttig REPL er til at eksperimentere med ting, så vil man på et eller
+andet tidspunkt gerne skrive et program og så importere det, når man har brug
+for det. 
+
+Alle programmer gemmes som tekstfiler og til redigeringen bruger man en teksteditor.
+
+Vi skal bruge Atom.
+
+Den findes under Programming fra main menu (nederste venstre hjørne) eller som et
+link på jeres desktop.
+
+== Det første program
+
+Åben en ny fil: File og så New File.
+
+Gem den: File og så Save.
+
+Gå til den folder der har et hus til venstre.
+Tryk så Create Folder og kald den skole-python.
+
+Tryk så på feltet ud for name og skriv `geo.py`.
+
+Derefter skriv følgende program og gem det:
+
+[source, linenums]
+----
+include::source/geo.py[]
+----
+
+Åbn så en terminal. Main -> System Tools -> LXterminal.
+
+På komandolinjen skriver du nu:
+
+```
+cd skole-python
+```
+
+Og kør så programmet med:
+
+```
+python geo.py
+```
+
+
+Prøv selv at lave ændringer til programmet.
+
+Når man taler om kommandoer i et bibliotek (som `turtle` er) så skriver man altid
+navnet på biblioteket inden kommandoen.
+
+== Funktioner
+
+Hvis man har lyst til at tegne polygoner flere gange, er det ret træls at skulle
+skrive stort set det samme hver gang.
+
+Det gælder ikke kun for turtle grafik, men for programmering i det hele taget.
+
+Heldigvis kan man lave funktioner - de minder en del om funktioner fra matematik.
+
+Hvis jeg nu har lyst til at skrive tallene fra 1 til n ud, så kunne jeg gøre sådan
+her:
+
+[source, linenums]
+----
+include::source/Fun1.py[lines=2..4]
+----
+
+Hvis jeg så kalder `print_range(5)` skrives tallene fra 1 til og med 5 ud.
+
+Uanset hvilket sprog man taler, så navngiver man funktioner i programmer på engelsk -
+det sikrer at flest mulig kan forstå hvad man laver. Navnene på funktioner og
+variable er meget vigtige.
+
+== Polygoner som funktioner
+
+Prøv at lave funktionerne `triangle`, `square` og `pentagon` i `geo.py`, sådan at du
+kan tegne figurerne med forskellige sidelængder.
+
+Starten på funktionerne skal se sådan ud:
+
+[source, linenums]
+----
+def triangle(length):
+     # your code here...
+
+def square(length):
+     # your code here...
+
+def pentagon(length):
+     # your code here...
+----
+
+Under funktionerne kan man kalde dem og kaldene vil så blive udført når man
+importerer koden.
+
+[source, linenums]
+----
+triangle(50)
+turtle.goto(100,0)
+square(30)
+turtle.goto(200,0)
+pentagon(25)
+----
+
+Hvis du ikke har lyst til spor mellem dine polygoner, så kan du bruge
+`turtle.penup()` til at få din turtle til at lade være med at tegne. Når du vil tegne
+igen kalder du `turtle.pendown()`.
+
+
+== Gentagelser
+
+Polygonerne kræver, at man gør det samme igen og igen. En 20-kant vil ikke være sjov
+at skrive ud side for side.
+
+Den slags kan man bruge en `for`-løkke til at ordne nemmere:
+
+Hvis man har lyst til at skrive tallene fra 1 til 10 ud, så kan man gøre sådan her:
+
+[source, linenums]
+----
+for i in range(1, 11):
+     print i
+----
+
+Her har vi en løkke-variabel `i`, som vi lader løbe fra 1 til 10 - bemærk, at det
+sidste tal i en `range` ikke er med, d.v.s. `range(1,11)` betyder [1,11[ for heltal.
+Altså, 1 er med, men 11 er ikke.
+
+Det man ønsker udført i hvert trin af løkken skriver man på den næste linje indrykket
+4 mellemrum. Du kan kan bruge et andet antal mellemrum, men langt de fleste bruger 4.
+
+Der kan godt være flere linjer man udfører i hvert trin af løkken. De skal så alle
+være indrykket det samme antal mellemrum.
+
+Prøv at lave dine polygoner om til at bruge en løkke.
+
+
+== Hjælpe-funktioner
+
+På nuværende tidspunkt må du være godt træt af at skrive næsten det samme i de tre
+funktioner for vores polygoner. Og du har helt sikkert ikke lyst til at lave
+6-kanter, 7-kanter o.s.v. på samme måde.
+
+Prøv at lave en funktion `polygon_turn_angle(n)` der beregner hvor meget din turtle
+skal dreje, hvis den skal lave en `n`-kant.
+
+Fordelen ved, at lave en separat funktion til at beregne vinklen er at det er nemmere
+at teste tingene. Men måske endnu vigtigere, så kan man navngive funktionen, så det
+er nemmere at forstå hvad der foregår.
+
+Lav nu en `polygon(n, length)` funktion der tegner en `n`-kant med
+sidelængden `length`.
+
+For eksempel så skal `polygon(4, 50)` tegne et kvadrat med
+sidelængden 50.
+
+
+
+
+
+

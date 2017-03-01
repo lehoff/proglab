@@ -1,0 +1,5 @@
+= Velkommen til Hørsholm Programming Lab
+
+Her kan du finde alle de øvelsesbeskrivelser, der er blevet lavet.
+
+Med tiden tilføjer vi mere information.
