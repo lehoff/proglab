@@ -1,0 +1,32 @@
+
+= Intro til pygame
+Torben Hoffmann
+torben.lehoff@gmail.com
+
+:imagesdir: images
+:doctype: article
+////
+:toc:
+:toclevels: 2
+////
+:numbered:
+:icons: font
+
+////
+:source-highlighter: rouge
+////
+
+:source-highlighter: pygments
+:source-language: python
+
+:pygmetns-style: tango
+:pygments-linenums-mode: inline
+
+Formålet med denne opgave er, at lære nogle af de simple ting, som man kan gøre med
+Pygame biblioteket.
+
+== Tegne på skærmen
+
+Da Pygame giver mulighed for at lave spil, så er der lidt flere ting man skal gøre 
+før der sker noget.
+
