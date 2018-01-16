@@ -450,12 +450,160 @@ Pygame biblioteket.</p>
 <p>Da Pygame giver mulighed for at lave spil, så er der lidt flere ting man skal gøre
 før der sker noget.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span>
+<span class="tok-kn">import</span> <span class="tok-nn">pygame</span>
+
+<span class="tok-c1"># Define some colors</span>
+<span class="tok-n">BLACK</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)</span>
+<span class="tok-n">WHITE</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">255</span><span class="tok-p">,</span> <span class="tok-mi">255</span><span class="tok-p">,</span> <span class="tok-mi">255</span><span class="tok-p">)</span>
+<span class="tok-n">GREEN</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">255</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)</span>
+<span class="tok-n">RED</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">255</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">)</span>
+
+
+<span class="tok-c1"># ----- Setup</span>
+<span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">init</span><span class="tok-p">()</span>
+
+<span class="tok-c1"># Set the width and height of the screen [width,height]</span>
+<span class="tok-n">size</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">700</span><span class="tok-p">,</span> <span class="tok-mi">500</span><span class="tok-p">]</span>
+<span class="tok-n">screen</span> <span class="tok-o">=</span> <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">display</span><span class="tok-o">.</span><span class="tok-n">set_mode</span><span class="tok-p">(</span><span class="tok-n">size</span><span class="tok-p">)</span>
+
+<span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">display</span><span class="tok-o">.</span><span class="tok-n">set_caption</span><span class="tok-p">(</span><span class="tok-s2">&quot;My Game&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-c1"># Loop until the user clicks the close button.</span>
+<span class="tok-n">done</span> <span class="tok-o">=</span> <span class="tok-bp">False</span>
+
+<span class="tok-c1"># Used to manage how fast the screen updates</span>
+<span class="tok-n">clock</span> <span class="tok-o">=</span> <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">time</span><span class="tok-o">.</span><span class="tok-n">Clock</span><span class="tok-p">()</span>
+
+<span class="tok-c1"># ----- END Setup</span>
+
+
+
+<span class="tok-k">def</span> <span class="tok-nf">draw_simple</span><span class="tok-p">():</span>
+    <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">draw</span><span class="tok-o">.</span><span class="tok-n">ellipse</span><span class="tok-p">(</span><span class="tok-n">screen</span><span class="tok-p">,</span> <span class="tok-n">BLACK</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-mi">10</span><span class="tok-p">,</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-mi">20</span><span class="tok-p">,</span><span class="tok-mi">30</span><span class="tok-p">],</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
+
+<span class="tok-c1"># -------- Main Program Loop -----------</span>
+<span class="tok-k">while</span> <span class="tok-ow">not</span> <span class="tok-n">done</span><span class="tok-p">:</span>
+
+    <span class="tok-c1"># --- Event Processing</span>
+    <span class="tok-k">for</span> <span class="tok-n">event</span> <span class="tok-ow">in</span> <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">event</span><span class="tok-o">.</span><span class="tok-n">get</span><span class="tok-p">():</span>
+        <span class="tok-k">if</span> <span class="tok-n">event</span><span class="tok-o">.</span><span class="tok-n">type</span> <span class="tok-o">==</span> <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">QUIT</span><span class="tok-p">:</span>
+            <span class="tok-n">done</span> <span class="tok-o">=</span> <span class="tok-bp">True</span>
+
+
+    <span class="tok-c1"># --- Drawing Code</span>
+
+    <span class="tok-c1"># First, clear the screen to WHITE. Don&#39;t put other drawing commands</span>
+    <span class="tok-c1"># above this, or they will be erased with this command.</span>
+    <span class="tok-n">screen</span><span class="tok-o">.</span><span class="tok-n">fill</span><span class="tok-p">(</span><span class="tok-n">WHITE</span><span class="tok-p">)</span>
+
+
+    <span class="tok-c1"># ----- Do your own drawing</span>
+    <span class="tok-n">draw_simple</span><span class="tok-p">()</span>
+
+    <span class="tok-c1"># Go ahead and update the screen with what we&#39;ve drawn.</span>
+    <span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">display</span><span class="tok-o">.</span><span class="tok-n">flip</span><span class="tok-p">()</span>
+
+    <span class="tok-c1"># Limit frames per second</span>
+    <span class="tok-n">clock</span><span class="tok-o">.</span><span class="tok-n">tick</span><span class="tok-p">(</span><span class="tok-mi">60</span><span class="tok-p">)</span>
+
+<span class="tok-c1"># Close the window and quit.</span>
+<span class="tok-n">pygame</span><span class="tok-o">.</span><span class="tok-n">quit</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Du kan bare tage koden ovenfor og gemme den i en fil kaldet <code>simple.py</code>, og så køre den
+med:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-err">$</span> <span class="tok-n">python</span> <span class="tok-n">simple</span><span class="tok-o">.</span><span class="tok-n">py</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det eneste du kan gøre lige nu er, at trykke på krydset og dermed lukke vinduet.</p>
+</div>
+<div class="paragraph">
+<p>Her er lidt forklaring til koden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Vi importerer <code>pygame</code> biblioteket, så vi kan bruge det.</p>
+</li>
+<li>
+<p>For at gøre livet nemmere definerer vi nogle farver.</p>
+</li>
+<li>
+<p>Setup delen handler om at få gang i Pygame.</p>
+</li>
+<li>
+<p>Vi laver en skærm vi kan tegne på.</p>
+</li>
+<li>
+<p>Vi giver vinduet en titel.</p>
+</li>
+<li>
+<p>Variablen <code>done</code> holder styr på om spillet er slut.</p>
+</li>
+<li>
+<p>Variablen <code>clock</code> initialiseres til et <code>Clock</code> object - skal bruges til at styre
+hvor tit skærmen skal opdateres.</p>
+</li>
+<li>
+<p>"Main Program Loop" gør de ting man skal gøre i alle Pygame spil:</p>
+</li>
+<li>
+<p>Laver et loop der først stopper når spillet er slut.</p>
+</li>
+<li>
+<p>Så tager man en event fra <code>pygame.event.get()</code> og laver noget baseret på hvad
+brugeren har gjort. Man kan meget mere end bare lukke ned, men det tager vi senere.</p>
+</li>
+<li>
+<p>Så tegner man skærmen. Det man har tegnet vises først frem, når man kalder
+<code>pygame.display.flip()</code>.</p>
+</li>
+<li>
+<p>Antallet af opdateringer af skærmen per sekund styres ved at kalde <code>clock.tick()</code>
+med det antal FPS man ønsker.</p>
+</li>
+<li>
+<p>Når man går ud af main loop lukker vi alt ned ved at kalde <code>pygame.quit()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lav nu om på <code>draw_simple()</code> functionen og leg med de forskellige ting man kan tegne
+med Pygame.</p>
+</div>
+<div class="paragraph">
+<p>Læs i online-dokumentationen for Pygame, hvilke muligheder man har for at tegne.</p>
+</div>
+<div class="paragraph">
+<p>Find ud af hvordan man kan bruge <code>pygame.math.Vector2</code> til at angive koordinaterne.</p>
+</div>
+<div class="paragraph">
+<p>Er der nogle af koordinaterne, der ikke kan erstattes af en vektor?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tegn_et_hus">2. Tegn et hus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lav en funktion <code>draw_house(offset, width, height)</code>, der tegner et hus med nederste
+venstre hjørne i koordinaterne givet ved vektoren <code>offset</code> og den angivne bredde og
+højde.</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-16 15:41:13 UTC
+Last updated 2018-01-16 16:28:52 UTC
 </div>
 </div>
 </body>

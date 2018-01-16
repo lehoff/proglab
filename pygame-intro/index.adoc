@@ -18,6 +18,7 @@ torben.lehoff@gmail.com
 
 :source-highlighter: pygments
 :source-language: python
+:sourcedir: src
 
 :pygmetns-style: tango
 :pygments-linenums-mode: inline
@@ -30,3 +31,52 @@ Pygame biblioteket.
 Da Pygame giver mulighed for at lave spil, så er der lidt flere ting man skal gøre 
 før der sker noget.
 
+[source, python]
+----
+include::{sourcedir}/simple.py[]
+----
+
+Du kan bare tage koden ovenfor og gemme den i en fil kaldet `simple.py`, og så køre den
+med:
+
+```
+$ python simple.py
+```
+
+Det eneste du kan gøre lige nu er, at trykke på krydset og dermed lukke vinduet.
+
+Her er lidt forklaring til koden:
+
+* Vi importerer `pygame` biblioteket, så vi kan bruge det.
+* For at gøre livet nemmere definerer vi nogle farver.
+* Setup delen handler om at få gang i Pygame. 
+  * Vi laver en skærm vi kan tegne på.
+  * Vi giver vinduet en titel.
+  * Variablen `done` holder styr på om spillet er slut.
+  * Variablen `clock` initialiseres til et `Clock` object - skal bruges til at styre
+    hvor tit skærmen skal opdateres.
+* "Main Program Loop" gør de ting man skal gøre i alle Pygame spil:
+  * Laver et loop der først stopper når spillet er slut.
+  * Så tager man en event fra `pygame.event.get()` og laver noget baseret på hvad 
+    brugeren har gjort. Man kan meget mere end bare lukke ned, men det tager vi senere.
+  * Så tegner man skærmen. Det man har tegnet vises først frem, når man kalder
+    `pygame.display.flip()`.
+  * Antallet af opdateringer af skærmen per sekund styres ved at kalde `clock.tick()` 
+    med det antal FPS man ønsker.
+* Når man går ud af main loop lukker vi alt ned ved at kalde `pygame.quit()`.
+
+ 
+Lav nu om på `draw_simple()` functionen og leg med de forskellige ting man kan tegne
+med Pygame.
+
+Læs i online-dokumentationen for Pygame, hvilke muligheder man har for at tegne.
+
+Find ud af hvordan man kan bruge `pygame.math.Vector2` til at angive koordinaterne.
+
+Er der nogle af koordinaterne, der ikke kan erstattes af en vektor?
+
+== Tegn et hus
+
+Lav en funktion `draw_house(offset, width, height)`, der tegner et hus med nederste 
+venstre hjørne i koordinaterne givet ved vektoren `offset` og den angivne bredde og
+højde.
