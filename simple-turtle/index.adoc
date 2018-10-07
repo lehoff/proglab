@@ -147,7 +147,7 @@ Derefter skriv følgende program og gem det:
 
 [source, linenums]
 ----
-include::source/geo.py[]
+#include::source/geo.py[]
 ----
 
 Åbn så en terminal. Main -> System Tools -> LXterminal.
@@ -184,7 +184,7 @@ her:
 
 [source, linenums]
 ----
-include::source/Fun1.py[lines=2..4]
+#include::source/Fun1.py[lines=2..4]
 ----
 
 Hvis jeg så kalder `print_range(5)` skrives tallene fra 1 til og med 5 ud.
