@@ -1,0 +1,467 @@
+<!doctype html>
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpel Turtle Grafik</title>
+    <meta name="description" content="various exercises used for the ProgrammingLab at Ungdomsskolen in Hørsholm">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/coderay.css">
+    <link rel="stylesheet" href="css/asciidoctor.css">
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/toc.js"></script>
+</head>
+<body>
+
+
+<!-- Nav Bar -->
+
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+            <h1>
+                <a href="">proglab.org home page</a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Basis for at programmere er, at forstå hvordan man får ting til at ske ved, at skrive
+kommandoer i et program. En af de bedre måder at lære dette på hedder <em>turtle
+graphics</em> eller <em>skildpaddegrafik</em>.</p>
+</div>
+<div class="paragraph">
+<p>Disse øvelser giver mulighed for at prøve en række kommandoer af på en lille turtle
+og derefter lave små programmer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pythons_repl">1. Pythons REPL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En af de rare ting ved Python er, at man har en REPL (Read-Eval-Print-Loop), hvor man
+kan se resultatet af ens kommandoer med det samme.</p>
+</div>
+<div class="paragraph">
+<p>Start med at åbne en terminal (aka kommandolinje) - programmet hedder LXTerminal på
+Lubuntu.</p>
+</div>
+<div class="paragraph">
+<p>Der burde være et link til LXTerminal på jeres desktop, men ellers så er den her:
+Main &#8594; System Tools &#8594; LXterminal.</p>
+</div>
+<div class="paragraph">
+<p>På komandolinjen skriver du nu:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">python3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Så kommer der til at stå noget i retning af:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">Python <span class="float">3.5</span><span class="float">.2</span> (default, Dec  <span class="integer">2</span> <span class="integer">2016</span>, <span class="integer">11</span>:<span class="integer">39</span>:<span class="integer">22</span>)
+[GCC <span class="float">4.2</span><span class="float">.1</span> Compatible Apple LLVM <span class="float">8.0</span><span class="float">.0</span> (clang-<span class="float">800.0</span><span class="float">.42</span><span class="float">.1</span>)] on darwin
+Type <span class="string"><span class="delimiter">&quot;</span><span class="content">help</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">copyright</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">credits</span><span class="delimiter">&quot;</span></span> <span class="keyword">or</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">license</span><span class="delimiter">&quot;</span></span> <span class="keyword">for</span> more information.
+&gt;&gt;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Udfor <code>&gt;&gt;&gt;</code> står jeres kursor og blinker.</p>
+</div>
+<div class="paragraph">
+<p>Prøv at skrive <code>2+2</code> og tryk på Enter.</p>
+</div>
+<div class="paragraph">
+<p>Når man trykker på Enter udføres den kommando man har skrevet.</p>
+</div>
+<div class="paragraph">
+<p>Man kan meget i REPL, men basis er ikke så stort, så man importerer som oftest
+biblioteker, der kan noget mere.</p>
+</div>
+<div class="paragraph">
+<p>Prøv at skrive</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">&gt;&gt;&gt; <span class="keyword">import</span> <span class="include">math</span>
+&gt;&gt;&gt; math.pi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Når man har lavet <code>import math</code> har man adgang til matematik-biblioteket. Det kan
+både være funktioner som <code>math.pi</code>, eller funktioner som <code>math.cos(x)</code>. I begge
+tilfælde skriver man navnet på biblioteket fulgt af et punktum og så navnet på den
+konstant eller funktion man vil bruge.</p>
+</div>
+<div class="paragraph">
+<p>Prøv at evaluere <code>math.pow(2,2)</code>, <code>math.pow(2,3)</code>, <code>math.pow(4,4)</code> samt nogle I selv
+finder på. Hvad gør <code>math.pow(x, y)</code> egentligt?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sig_hej_til_turtle">2. Sig hej til turtle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Alt vedrørende turtle graphics findes i <code>turtle</code> biblioteket.</p>
+</div>
+<div class="paragraph">
+<p>Start med at importere turtle og lav disse kommandoer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">&gt;&gt;&gt; <span class="keyword">import</span> <span class="include">turtle</span>
+&gt;&gt;&gt; turtle.forward(<span class="integer">50</span>)
+&gt;&gt;&gt; turtle.left(<span class="integer">90</span>)
+&gt;&gt;&gt; turtle.forward(<span class="integer">30</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se hvad der sker i vinduet med vores turtle for hvert skridt.</p>
+</div>
+<div class="paragraph">
+<p>Andre kommandoer af interesse lige nu:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>turtle.right(angle)</code></p>
+</li>
+<li>
+<p><code>turtle.backward(distance)</code></p>
+</li>
+<li>
+<p><code>turtle.penup()</code></p>
+</li>
+<li>
+<p><code>turtle.pendown()</code></p>
+</li>
+<li>
+<p><code>turtle.position()</code></p>
+</li>
+<li>
+<p><code>turtle.goto(x,y)</code></p>
+</li>
+<li>
+<p><code>turtle.heading()</code></p>
+</li>
+<li>
+<p><code>turtle.hideturtle()</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lav lidt eksperimenter med disse kommandoer for at finde ud af hvad de gør.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tegn_en_ligesidet_trekant">3. Tegn en ligesidet trekant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Med de kommandoer I kender nu kan I lave en ligesidet trekant. Prøv at tegne 2 med forskellig
+størrelse.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tegn_et_kvadrat">4. Tegn et kvadrat</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prøv at tegne 2 med forskellig størreltse.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tegn_en_regulær_femkant">5. Tegn en regulær femkant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Find ud af hvor meget der skal drejes hver gang.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="opstart_af_editor">6. Opstart af editor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Uanset hvor nyttig REPL er til at eksperimentere med ting, så vil man på et eller
+andet tidspunkt gerne skrive et program og så importere det, når man har brug
+for det.</p>
+</div>
+<div class="paragraph">
+<p>Alle programmer gemmes som tekstfiler og til redigeringen bruger man en teksteditor.</p>
+</div>
+<div class="paragraph">
+<p>Vi skal bruge Atom.</p>
+</div>
+<div class="paragraph">
+<p>Den findes under Programming fra main menu (nederste venstre hjørne) eller som et
+link på jeres desktop.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="det_første_program">7. Det første program</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Åben en ny fil: File og så New File.</p>
+</div>
+<div class="paragraph">
+<p>Gem den: File og så Save.</p>
+</div>
+<div class="paragraph">
+<p>Gå til den folder der har et hus til venstre.
+Tryk så Create Folder og kald den skole-python.</p>
+</div>
+<div class="paragraph">
+<p>Tryk så på feltet ud for name og skriv <code>geo.py</code>.</p>
+</div>
+<div class="paragraph">
+<p>Derefter skriv følgende program og gem det:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="linenums">Unresolved directive in simple-turtle.adoc - include::source/geo.py[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Åbn så en terminal. Main &#8594; System Tools &#8594; LXterminal.</p>
+</div>
+<div class="paragraph">
+<p>På komandolinjen skriver du nu:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">cd skole-python</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Og kør så programmet med:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">python geo.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Prøv selv at lave ændringer til programmet.</p>
+</div>
+<div class="paragraph">
+<p>Når man taler om kommandoer i et bibliotek (som <code>turtle</code> er) så skriver man altid
+navnet på biblioteket inden kommandoen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="funktioner">8. Funktioner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hvis man har lyst til at tegne polygoner flere gange, er det ret træls at skulle
+skrive stort set det samme hver gang.</p>
+</div>
+<div class="paragraph">
+<p>Det gælder ikke kun for turtle grafik, men for programmering i det hele taget.</p>
+</div>
+<div class="paragraph">
+<p>Heldigvis kan man lave funktioner - de minder en del om funktioner fra matematik.</p>
+</div>
+<div class="paragraph">
+<p>Hvis jeg nu har lyst til at skrive tallene fra 1 til n ud, så kunne jeg gøre sådan
+her:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="linenums">Unresolved directive in simple-turtle.adoc - include::source/Fun1.py[lines=2..4]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hvis jeg så kalder <code>print_range(5)</code> skrives tallene fra 1 til og med 5 ud.</p>
+</div>
+<div class="paragraph">
+<p>Uanset hvilket sprog man taler, så navngiver man funktioner i programmer på engelsk -
+det sikrer at flest mulig kan forstå hvad man laver. Navnene på funktioner og
+variable er meget vigtige.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="polygoner_som_funktioner">9. Polygoner som funktioner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prøv at lave funktionerne <code>triangle</code>, <code>square</code> og <code>pentagon</code> i <code>geo.py</code>, sådan at du
+kan tegne figurerne med forskellige sidelængder.</p>
+</div>
+<div class="paragraph">
+<p>Starten på funktionerne skal se sådan ud:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="linenums">def triangle(length):
+     # your code here...
+
+def square(length):
+     # your code here...
+
+def pentagon(length):
+     # your code here...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Under funktionerne kan man kalde dem og kaldene vil så blive udført når man
+importerer koden.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="linenums">triangle(50)
+turtle.goto(100,0)
+square(30)
+turtle.goto(200,0)
+pentagon(25)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hvis du ikke har lyst til spor mellem dine polygoner, så kan du bruge
+<code>turtle.penup()</code> til at få din turtle til at lade være med at tegne. Når du vil tegne
+igen kalder du <code>turtle.pendown()</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gentagelser">10. Gentagelser</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Polygonerne kræver, at man gør det samme igen og igen. En 20-kant vil ikke være sjov
+at skrive ud side for side.</p>
+</div>
+<div class="paragraph">
+<p>Den slags kan man bruge en <code>for</code>-løkke til at ordne nemmere:</p>
+</div>
+<div class="paragraph">
+<p>Hvis man har lyst til at skrive tallene fra 1 til 10 ud, så kan man gøre sådan her:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="linenums">for i in range(1, 11):
+     print i</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Her har vi en løkke-variabel <code>i</code>, som vi lader løbe fra 1 til 10 - bemærk, at det
+sidste tal i en <code>range</code> ikke er med, d.v.s. <code>range(1,11)</code> betyder [1,11[ for heltal.
+Altså, 1 er med, men 11 er ikke.</p>
+</div>
+<div class="paragraph">
+<p>Det man ønsker udført i hvert trin af løkken skriver man på den næste linje indrykket
+4 mellemrum. Du kan kan bruge et andet antal mellemrum, men langt de fleste bruger 4.</p>
+</div>
+<div class="paragraph">
+<p>Der kan godt være flere linjer man udfører i hvert trin af løkken. De skal så alle
+være indrykket det samme antal mellemrum.</p>
+</div>
+<div class="paragraph">
+<p>Prøv at lave dine polygoner om til at bruge en løkke.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hjælpe_funktioner">11. Hjælpe-funktioner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>På nuværende tidspunkt må du være godt træt af at skrive næsten det samme i de tre
+funktioner for vores polygoner. Og du har helt sikkert ikke lyst til at lave
+6-kanter, 7-kanter o.s.v. på samme måde.</p>
+</div>
+<div class="paragraph">
+<p>Prøv at lave en funktion <code>polygon_turn_angle(n)</code> der beregner hvor meget din turtle
+skal dreje, hvis den skal lave en <code>n</code>-kant.</p>
+</div>
+<div class="paragraph">
+<p>Fordelen ved, at lave en separat funktion til at beregne vinklen er at det er nemmere
+at teste tingene. Men måske endnu vigtigere, så kan man navngive funktionen, så det
+er nemmere at forstå hvad der foregår.</p>
+</div>
+<div class="paragraph">
+<p>Lav nu en <code>polygon(n, length)</code> funktion der tegner en <code>n</code>-kant med
+sidelængden <code>length</code>.</p>
+</div>
+<div class="paragraph">
+<p>For eksempel så skal <code>polygon(4, 50)</code> tegne et kvadrat med
+sidelængden 50.</p>
+</div>
+</div>
+</div>
+
+    </div>
+
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+
+    <aside class="large-3 columns">
+
+        <h4>Posts</h4>
+        <ul id="posts" class="posts nav">
+            
+        </ul>
+
+        <div class="panel">
+            <h5>Featured</h5>
+
+            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon
+                nulla pork belly cupidatat meatloaf cow.</p>
+        </div>
+
+    </aside>
+
+    <!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>Footer</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var doc = document.documentElement;
+doc.setAttribute('data-useragent', navigator.userAgent);
+</script>
+</body>
+</html>
