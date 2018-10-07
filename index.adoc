@@ -1,0 +1,5 @@
+= Velkommen til proglab.org
+:showtitle:
+:page-title: proglab.org
+:page-description: Exercises and more for the ProgrammingLab at Ungdomsskolen Hørsholm
+
